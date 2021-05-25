@@ -13,19 +13,20 @@
 <script src="../js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	function sendOrder(id){
-		location.href = "${pageContext.request.contextPath}/sendOrder?oid="+id;
+		location.href = "${pageContext.request.contextPath}/admin?method=sendOrder&oid="+id;
 	}
 	$(function(){
 		$("#search").click(function(){
 			var username = $("input[name='username']").val();
 			var status = $("select[name='orderStatus'] option:selected").val();
-			location.href="${pageContext.request.contextPath}/searchOrder?username="+username+"&status="+status;
+			location.href="${pageContext.request.contextPath}/admin?method=searchOrder&username="+username+"&ostate="+status;
 		})
 	})
 </script>
 </head>
 <body>
-<div class="row" style="width:98%;margin-left: 1%;margin-top: 5px;">
+<%@include file="frame.jsp"%>
+<div class="row" style="margin-left: 250px">
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -69,27 +70,27 @@
 					<c:forEach items="${orderList}" var="order" varStatus="i">
 					<tr>
 						<td>${i.count}</td>
-						<td>${order.id}</td>
-						<td>${order.money}</td>
+						<td>${order.oid}</td>
+						<td>${order.ocount}</td>
 						<td>
-							<c:if test="${order.status eq 1}">
+							<c:if test="${order.ostate eq 1}">
 								未支付
 							</c:if>
-							<c:if test="${order.status eq 2}">
+							<c:if test="${order.ostate eq 2}">
 								已支付,待发货
 							</c:if>
-							<c:if test="${order.status eq 3}">
+							<c:if test="${order.ostate eq 3}">
 								已发货,待收货
 							</c:if>
-							<c:if test="${order.status eq 4}">
+							<c:if test="${order.ostate eq 4}">
 								订单完成
 							</c:if>
 						</td>
-						<td>${order.time}</td>
-						<td>${order.username}</td>
+						<td>${order.da}</td>
+						<td>${order.uname}</td>
 						<td>
-							<c:if test="${order.status eq 2}">
-								<button type="button" class="btn btn-danger btn-sm" onclick="sendOrder('${order.id}')">发货</button>
+							<c:if test="${order.ostate eq 2}">
+								<button type="button" class="btn btn-danger btn-sm" onclick="sendOrder('${order.oid}')">去发货</button>
 							</c:if>
 						</td>
 					</tr>

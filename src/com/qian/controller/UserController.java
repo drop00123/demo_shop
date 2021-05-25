@@ -2,6 +2,7 @@ package com.qian.controller;
 
 import com.mysql.cj.util.StringUtils;
 import com.qian.pojo.Message;
+import com.qian.pojo.PageBean;
 import com.qian.pojo.User;
 import com.qian.service.UserService;
 import com.qian.service.impl.UserServiceImpl;
@@ -10,6 +11,7 @@ import com.qian.utils.Constants;
 import com.qian.utils.MD5Utils;
 import com.qian.utils.RandomUtils;
 import org.apache.commons.beanutils.BeanUtils;
+import org.junit.Test;
 import org.omg.CORBA.PUBLIC_MEMBER;
 
 import javax.servlet.annotation.WebServlet;
@@ -83,6 +85,7 @@ public class UserController extends BaseServlet{
         }
         return "forward:/message.jsp";
     }
+
     public String login(HttpServletRequest req,HttpServletResponse resp) throws SQLException, ClassNotFoundException {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
@@ -92,6 +95,11 @@ public class UserController extends BaseServlet{
         User user = userService.GetUser(username);
         if(user!=null)
         {
+            if(user.getUrole()==1)
+            {
+                req.getSession().setAttribute("adminUser",user);
+                return "forward:/admin/index.jsp";
+            }
             req.getSession().setAttribute("loginUser",user);
             return "forward:/index.jsp";
         }
@@ -169,10 +177,65 @@ public class UserController extends BaseServlet{
         }
         return "forward:/message.jsp";
     }
-    public String bbsDetail(HttpServletRequest req,HttpServletResponse resp)
+    public String show(HttpServletRequest req,HttpServletResponse resp)
     {
-       List<Message> list=userService.getAllBbs();
-       req.setAttribute("list",list);
-       return "forward:/bbsDetail.jsp";
+        int pageSize=5;
+        String currentPage = req.getParameter("currentPage");
+        int page=1;
+        if(currentPage!=null)
+        {
+           page = Integer.parseInt(currentPage);
+        }
+        PageBean<Message> pageBean= userService.findAll(page,pageSize);
+        req.setAttribute("pageBean",pageBean);
+        return "forward:/bbsDetail.jsp";
+    }
+    public String prove(HttpServletRequest req,HttpServletResponse resp)
+    {
+        Object loginUser = req.getSession().getAttribute("loginUser");
+        if(loginUser==null)
+        {
+            req.setAttribute("msg","请先登录");
+            return "forward:/login.jsp";
+        }
+        User user= (User) loginUser;
+        String code = user.getCode();
+        String pwd = req.getParameter("oldPassword");
+        if(!StringUtils.isNullOrEmpty(pwd))
+        {
+            String s = MD5Utils.md5(pwd);
+            boolean flag=userService.checkPwd(code,s);
+            if(flag)
+            {
+                return "1";
+            }
+        }
+        return "0";
+    }
+    public String updatePwd(HttpServletRequest req,HttpServletResponse resp)
+    {
+        Object loginUser = req.getSession().getAttribute("loginUser");
+        if(loginUser==null)
+        {
+            req.setAttribute("msg","请先登录");
+            return "forward:/login.jsp";
+        }
+        User user = (User) loginUser;
+        int uid = user.getUid();
+        String newPwd = req.getParameter("password");
+        String pwd = MD5Utils.md5(newPwd);
+        boolean flag=userService.updateNewPwd(uid,pwd);
+        if(flag)
+        {
+            req.setAttribute("msg","修改密码成功,请重新登录");
+            req.getSession().removeAttribute("loginUser");
+            Cookie cookie = new Cookie("auto", "");
+            cookie.setPath("/");
+            cookie.setMaxAge(0);
+            resp.addCookie(cookie);
+            return "forward:/message.jsp";
+        }
+        req.setAttribute("msg","程序异常,修改密码失败");
+        return "forward:/message.jsp";
     }
 }

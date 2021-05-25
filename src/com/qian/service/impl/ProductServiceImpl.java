@@ -35,4 +35,12 @@ public class ProductServiceImpl implements ProductService {
         PageBean<Product> pageBean = new PageBean<>(list, 1, pageSize, l);
         return pageBean;
     }
+
+    @Override
+    public PageBean<Product> showAllGoods(int page, int pageSize) {
+        long totalPage=productDao.selectAllCount();
+        List<Product> list=productDao.selectBy(page,pageSize);
+        PageBean<Product> pageBean = new PageBean<>(list, page, pageSize, totalPage);
+        return pageBean;
+    }
 }

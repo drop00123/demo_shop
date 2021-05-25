@@ -19,4 +19,14 @@ public interface UserDao {
     void insertMessage(int id, String content, LocalDateTime date);
 
     List<Message> queryBbs();
+
+    long queryPage();
+
+    List<Message> queryList(int page, int pageSize);
+
+    int updatePwdByUid(int uid, String pwd);
+
+    List<User> queryUserList(int page, int pageSize);
+
+    long queryPageUser();
 }

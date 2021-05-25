@@ -12,4 +12,8 @@ public interface OrdersService {
     void deleteByOid(String oid);
 
     void changeStateByOid(String oid,int oState);
+
+    List<Orders> findAllOrder();
+
+    List<Orders> findOrdersByUname(String username, String ostate);
 }

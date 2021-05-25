@@ -20,6 +20,15 @@ public class Product implements Serializable {
     private int pstate; //商品的热门指数
     private String pinfo; //商品的描述
     private BigDecimal pprice; //价格
+    private String tname;
+
+    public String getTname() {
+        return tname;
+    }
+
+    public void setTname(String tname) {
+        this.tname = tname;
+    }
 
     public BigDecimal getPprice() {
         return pprice;

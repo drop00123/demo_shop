@@ -21,6 +21,15 @@ public class Orders implements Serializable {
     private Date otime;
     private int ostate; //订单状态 0 未付款，1已经付款未发货 2发货待收货 3 收货待评价 4订单完成 5 退货状态
     private List<Item> items;
+    private String uname;
+
+    public String getUname() {
+        return uname;
+    }
+
+    public void setUname(String uname) {
+        this.uname = uname;
+    }
 
     public List<Item> getItems() {
         return items;
@@ -90,7 +99,7 @@ public class Orders implements Serializable {
     public String getDa()
     {
         Date otime = getOtime();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss");
         String format = simpleDateFormat.format(otime);
         return format;
     }
@@ -101,9 +110,11 @@ public class Orders implements Serializable {
                 "oid='" + oid + '\'' +
                 ", uid=" + uid +
                 ", aid=" + aid +
+                ", address=" + address +
                 ", ocount=" + ocount +
                 ", otime=" + otime +
                 ", ostate=" + ostate +
+                ", items=" + items +
                 '}';
     }
 }

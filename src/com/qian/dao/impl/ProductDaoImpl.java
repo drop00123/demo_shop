@@ -84,4 +84,44 @@ public class ProductDaoImpl implements ProductDao {
         }
         return 0;
     }
+
+    @Override
+    public long selectAllCount() {
+        QueryRunner queryRunner = new QueryRunner(C3P0Utils.getDataSource());
+        String sql="select count(1) from product;";
+        try {
+            Object query = queryRunner.query(sql, new ScalarHandler());
+            if(query!=null)
+            {
+                long count=(long)query;
+                return count;
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return 0;
+    }
+
+    @Override
+    public List<Product> selectBy(int page, int pageSize) {
+        QueryRunner queryRunner = new QueryRunner(C3P0Utils.getDataSource());
+        String sql=" select t_name as  tname ,p_id as pid,p_name as pname,p_time as ptime ,p.p_info as pinfo ,p_price as pprice from product as p join type as t on  p.t_id=t.t_id    limit ?,?";
+        try {
+            List<Product> query = queryRunner.query(sql, new BeanListHandler<>(Product.class), (page-1)*pageSize, pageSize);
+            if(query!=null)
+            {
+                return query;
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+    @Test
+    public void test()
+    {
+        List<Product> products = selectBy(1, 2);
+        System.out.println(products);
+    }
 }
+

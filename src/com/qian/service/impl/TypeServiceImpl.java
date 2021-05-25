@@ -19,4 +19,22 @@ public class TypeServiceImpl implements TypeService {
         List<Type> types = typeDao.selectAll();
         return types;
     }
+
+    @Override
+    public boolean updateTypeByType(Type type) {
+        boolean flag=typeDao.updateTypes(type);
+        return flag;
+    }
+
+    @Override
+    public boolean deleteByTid(int i) {
+        boolean b = typeDao.deleteTypeByTid(i);
+        return b;
+    }
+
+    @Override
+    public boolean addTypeByType(String typeName, String typeInfo) {
+       boolean flag= typeDao.insertType(typeName,typeInfo);
+        return flag;
+    }
 }

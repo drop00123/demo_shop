@@ -11,4 +11,8 @@ public interface ProductDao {
 
     List<Product> selectByPname(int page,int pageSize,String needs);
      long selectCountByPName(String name);
+
+    long selectAllCount();
+
+    List<Product> selectBy(int page, int pageSize);
 }

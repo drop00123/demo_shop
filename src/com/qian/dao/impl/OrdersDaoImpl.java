@@ -1,5 +1,6 @@
 package com.qian.dao.impl;
 
+import com.mysql.cj.util.StringUtils;
 import com.mysql.cj.x.protobuf.MysqlxCrud;
 import com.qian.dao.OrdersDao;
 import com.qian.pojo.Address;
@@ -7,6 +8,7 @@ import com.qian.pojo.Orders;
 import com.qian.utils.C3P0Utils;
 import com.qian.utils.RandomUtils;
 import com.sun.deploy.cache.BaseLocalApplicationProperties;
+import com.sun.org.apache.xpath.internal.operations.Or;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.*;
@@ -41,7 +43,6 @@ public class OrdersDaoImpl implements OrdersDao {
                 ",a_state as astate,o_id as oid ,o_count as ocount ,o_time as o_time,o_state as ostate\n" +
                 "from address a join orders o on a.a_id = o.a_id where o.u_id=? order by o_time desc";
         List<Orders> list= new ArrayList<>();
-        Address address = new Address();
         try {
             List<Map<String, Object>> query = queryRunner.query(sql, new MapListHandler(), uid);
             if(query==null)
@@ -50,6 +51,7 @@ public class OrdersDaoImpl implements OrdersDao {
             }
             for(int i=0;i<query.size();i++)
             {
+                Address address = new Address();
                 Orders orders = new Orders();
                 Date o_time2 = localDateTimeToDate((LocalDateTime) query.get(i).get("o_time"));
                 orders.setOtime(o_time2);
@@ -71,6 +73,7 @@ public class OrdersDaoImpl implements OrdersDao {
         }
         return null;
     }
+    
     public static Date localDateTimeToDate(LocalDateTime localDateTime) {
         ZoneId zoneId = ZoneId.systemDefault();
         ZonedDateTime zdt = localDateTime.atZone(zoneId);
@@ -97,5 +100,80 @@ public class OrdersDaoImpl implements OrdersDao {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
+
+    @Override
+    public List<Orders> selectAllOrder() {
+        QueryRunner queryRunner = new QueryRunner(C3P0Utils.getDataSource());
+        String sql="select o_id as oid ,u_name as uname, o.u_id as uid,o_state as ostate,o_time as otime,o_count as ocount from orders as o join user u on u.u_id = o.u_id order by o_time desc ";
+        List<Orders> list=new ArrayList<>();
+        try {
+            List<Map<String, Object>> query = queryRunner.query(sql, new MapListHandler());
+            if(query==null)
+            {
+                return null;
+            }
+            for(int i=0;i<query.size();i++)
+            {
+                Orders orders = new Orders();
+                orders.setOid((String) query.get(i).get("o_id"));
+                orders.setOcount((BigDecimal) query.get(i).get("o_count"));
+                orders.setOstate((Integer) query.get(i).get("o_state"));
+                Date o_time2 = localDateTimeToDate((LocalDateTime) query.get(i).get("o_time"));
+                orders.setOtime(o_time2);
+                orders.setUname((String) query.get(i).get("u_name"));
+                orders.setUid((Integer) query.get(i).get("u_id"));
+                list.add(orders);
+            }
+            return list;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public List<Orders> selectOrdersByUsername(String username, String ostate) {
+        QueryRunner queryRunner = new QueryRunner(C3P0Utils.getDataSource());
+        String sql="";
+        List<Map<String, Object>> query=null;
+        List<Orders> list=new ArrayList<>();
+        if(username.length()!=0)
+        {
+            sql="select o_id,o_time,o_count,o_state,u_name from orders o join user u on o.u_id = u.u_id where u_name=? and o_state=?";
+            try {
+                query = queryRunner.query(sql, new MapListHandler(), username, ostate);
+                if(query==null)
+                {
+                    return null;
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+        else{
+            sql="select o_id,o_time,o_count,o_state,u_name from orders o join user u on o.u_id = u.u_id where o_state=?";
+            try {
+                 query = queryRunner.query(sql, new MapListHandler(), ostate);
+                if(query==null)
+                {
+                    return null;
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+        for(int i=0;i<query.size();i++)
+        {
+            Orders orders = new Orders();
+            orders.setOid((String) query.get(i).get("o_id"));
+            orders.setOcount((BigDecimal) query.get(i).get("o_count"));
+            orders.setOstate((Integer) query.get(i).get("o_state"));
+            Date date = localDateTimeToDate((LocalDateTime) query.get(i).get("o_time"));
+            orders.setOtime(date);
+            orders.setUname((String) query.get(i).get("u_name"));
+            list.add(orders);
+        }
+        return list;
     }
 }

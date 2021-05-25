@@ -1,6 +1,7 @@
 package com.qian.service;
 
 import com.qian.pojo.Message;
+import com.qian.pojo.PageBean;
 import com.qian.pojo.Type;
 import com.qian.pojo.User;
 
@@ -16,4 +17,12 @@ public interface UserService {
     void createBbs(int id, String content);
 
     List<Message> getAllBbs();
+
+    PageBean<Message> findAll(int page, int pageSize);
+
+    boolean updateNewPwd(int uid, String pwd);
+
+    boolean checkPwd(String s,String pwd);
+
+    PageBean<User> findAllUser(int page, int pageSize);
 }

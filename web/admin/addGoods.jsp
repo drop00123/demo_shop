@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../css/bootstrap.min.css" />
@@ -12,8 +12,9 @@
 <title>商品添加页面</title>
 </head>
 <body>
-	<div class="row" style="margin-left: 20px;">
-		<form action="${pageContext.request.contextPath }/addGoods" method="post" enctype="multipart/form-data">
+<%@include file="frame.jsp"%>
+	<div class="row" style="margin-left: 300px;">
+		<form action="${pageContext.request.contextPath}/admin?method=addGoods" method="post" <%--enctype="multipart/form-data"--%>>
 			<div>
 				<h3>新增商品</h3>
 			</div>
@@ -22,23 +23,24 @@
 				<div class="col-sm-6">
 					<div class="form-group form-inline">
 						<label>名称:</label>
-						<input type="text" name="name" class="form-control" />
+						<input type="text" name="tname" class="form-control" />
 					</div>
 					
 					<div class="form-group form-inline">
 						<label>分类:</label>
 						<select name="typeid" class="form-control">
 							<option value="0">------</option>
-							<option value="1">电脑</option>
-							<option value="2">笔记本</option>
-							<option value="3">平板</option>
-							<option value="7">小米手机</option>
-							<option value="8">红米</option>
+							<option value="1">电子产品</option>
+							<option value="2">卫生防疫</option>
+							<option value="3">服装</option>
+							<option value="4">便民买菜</option>
+							<option value="5">开饭了</option>
+							<option value="6">便民大药房</option>
 						</select>
 					</div>
 					<div class="form-group form-inline">
 						<label>时间:</label>
-						<input type="text" name="pubdate" readonly="readonly" class="form-control" onclick="setday(this)" />
+						<input type="text" name="pdate" readonly="readonly" class="form-control" onclick="setday(this)" />
 					</div>
 				</div>
 				<div class="col-sm-6">
@@ -60,7 +62,7 @@
 					</div>
 					<div class="form-group ">
 						<label>商品简介</label>
-						<textarea  name="intro" class="form-control" rows="5"></textarea>
+						<textarea  name="pinfo" class="form-control" rows="5"></textarea>
 					</div>
 					<div class="form-group form-inline">
 						<input type="submit" value="添加" class="btn btn-primary" />

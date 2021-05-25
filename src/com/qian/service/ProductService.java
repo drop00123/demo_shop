@@ -10,4 +10,7 @@ public interface ProductService {
     Product getProduct(int pid);
 
     PageBean<Product> findAll(String needs,int pageSize,int currentPage);
+
+
+    PageBean<Product> showAllGoods(int page,int pageSize);
 }

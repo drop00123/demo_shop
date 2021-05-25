@@ -12,4 +12,8 @@ public interface OrdersDao {
     void updateOrdersByOid(String oid);
 
     void updateStateByOid(String oid,int oState);
+
+    List<Orders> selectAllOrder();
+
+    List<Orders> selectOrdersByUsername(String username, String ostate);
 }

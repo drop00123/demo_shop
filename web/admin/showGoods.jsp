@@ -1,10 +1,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../css/bootstrap.min.css" />
@@ -15,7 +15,8 @@
 
 </head>
 <body>
-<div class="row" style="width:98%;margin-left: 1%;">
+<%@include file="frame.jsp"%>
+<div class="row" style="margin-left: 300px;">
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -44,22 +45,23 @@
 						<tr>
 							<td>序号</td><td>商品名称</td><td>价格</td><td>上架时间</td><td>类型</td><td>操作</td>
 						</tr>
-						<c:forEach items="${goodsList}" var="goods" varStatus="i">
+
+						<c:forEach items="${goodsList.list}" var="goods" varStatus="i">
 							<tr>
 								<td>${i.count}</td>
-								<td>${goods.name}</td>
-								<td>${goods.price}</td>
-								<td>${goods.pubdate}</td>
-								<td>${goods.typeName}</td>
+								<td>${goods.pname}</td>
+								<td>${goods.pprice}</td>
+								<td>${goods.ptime}</td>
+								<td>${goods.tname}</td>
 								<td>删除 &nbsp;修改 &nbsp;
-									<a tabindex="0" id="example${goods.id}" class="btn btn-primary btn-xs"
+									<a tabindex="0" id="example${goods.pid}" class="btn btn-primary btn-xs"
 									role="button" data-toggle="popover"
 									data-trigger="focus"
 									data-placement="left"
-									data-content="${goods.intro}">描述</a>
+									data-content="${goods.pinfo}">描述</a>
 									<script type="text/javascript">
 										$(function(){
-											$("#example${goods.id}").popover();
+											$("#example${goods.pid}").popover();
 										})
 									</script>
 								</td>
@@ -67,7 +69,37 @@
 						</c:forEach>
 					</table>
 				</div>
+	<%--			<div class="row text-center">
+					<div class="col-sm-12">
+						<nav aria-label="Page navigation">
+							<ul class="pagination">
+								<li class="${goodsList.page==1?'disabled':''}">
+									<a  href="${pageContext.request.contextPath}/admin?method=goodsShow&page=${goodsList.page-1}" aria-label="Previous">
+										<span aria-hidden="true">&laquo;</span>
+									</a>
+								</li>
+
+								<c:forEach begin="1" end="${goodsList.totalPage}" step="1" var="index">
+									<c:if test="${goodsList.page==index}">
+										<li class="active"><a href="${pageContext.request.contextPath}/admin?method=goodsShow&currentPage=${index}">${index}</a></li>
+									</c:if>
+
+									<c:if test="${goodsList.page!=index}">
+										<li ><a href="${pageContext.request.contextPath}/admin?method=goodsShow&currentPage=${index}">${index}</a></li>
+									</c:if>
+								</c:forEach>
+
+								<li class="${goodsList.page==goodsList.totalPage?'disabled':''}">
+									<a href="${pageContext.request.contextPath}/admin?method=goodsShow&currentPage=${goodsList.Page+1}" aria-label="Next">
+										<span aria-hidden="true">&raquo;</span>
+									</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</div>--%>
 			</div>
+
 			
 		</div>
 	</div>

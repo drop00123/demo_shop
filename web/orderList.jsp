@@ -52,9 +52,9 @@
 							<c:if test="${order.ostate eq 2 }">
 								已支付,待收货
 							</c:if>
-						<%--	<c:if test="${order.ostate eq 3 }">
+							<c:if test="${order.ostate eq 3 }">
 								已发货,待收货
-							</c:if>--%>
+							</c:if>
 							<c:if test="${order.ostate eq 4 }">
 								订单完成
 							</c:if>
@@ -63,9 +63,11 @@
 					<th>${order.da}</th>
 					<th>${order.address.adetail}</th>
 					<th>
-						<button type="button" class="btn btn-primary btn-sm" onclick="pay('${order.oid}')">立即支付</button>
+						<c:if test="${order.ostate==1}">
+							<button type="button" class="btn btn-primary btn-sm" onclick="pay('${order.oid}')">立即支付</button>
+						</c:if>
 						<button type="button" class="btn btn-danger btn-sm" onclick="deleteOrder('${order.oid}')">删除订单</button>
-						<c:if test="${order.ostate eq 2 }">
+						<c:if test="${order.ostate eq 3 }">
 							<button type="button" class="btn btn-warning btn-sm" onclick="changeStatus('${order.oid}')">确认收货</button>
 						</c:if>
 					</th>

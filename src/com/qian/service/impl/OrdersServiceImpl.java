@@ -48,4 +48,16 @@ public class OrdersServiceImpl implements OrdersService {
     public void changeStateByOid(String oid,int oState) {
         ordersDao.updateStateByOid(oid,oState);
     }
+
+    @Override
+    public List<Orders> findAllOrder() {
+        List<Orders> list= ordersDao.selectAllOrder();
+        return list;
+    }
+
+    @Override
+    public List<Orders> findOrdersByUname(String username, String ostate) {
+        List<Orders> list=ordersDao.selectOrdersByUsername(username,ostate);
+        return list;
+    }
 }

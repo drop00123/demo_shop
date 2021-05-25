@@ -91,7 +91,6 @@
 				</div>
 				<div>${registerMsg}</div>
 			</form>
-
 		</div>
 	</div>
 </div>
