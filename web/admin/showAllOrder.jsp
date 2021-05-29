@@ -32,7 +32,7 @@
 			<div class="panel-heading">
 				订单列表
 			</div>
-			<div class="panel-body">
+			<div class="panel-body"  style="overflow: scroll">
 				<div class="row">
 					<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
 						<div class="form-group form-inline">
@@ -77,10 +77,10 @@
 								未支付
 							</c:if>
 							<c:if test="${order.ostate eq 2}">
-								已支付,待发货
+								已支付,待商家发货
 							</c:if>
 							<c:if test="${order.ostate eq 3}">
-								已发货,待收货
+								商家已发货,待收货
 							</c:if>
 							<c:if test="${order.ostate eq 4}">
 								订单完成

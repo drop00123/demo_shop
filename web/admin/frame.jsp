@@ -39,7 +39,7 @@
                     height: 500px;
                 }
                 body{
-                    background-image: url("../image/updateP.jpg");
+                    background-image: url("../image/root.jpg");
                     background-repeat: no-repeat;
                     background-size: cover;
                 }
@@ -59,10 +59,6 @@
         </script>
     </head>
 <body>
-<%--<c:if test="${admin==null }">
-    <c:redirect url="login.jsp"></c:redirect>
-</c:if>--%>
-<!--导航 -->
 <div style="width: 80%;margin-left: 10%;">
     <nav class="navbar navbar-default navbar-static-top">
         <div class="navbar-header">
@@ -71,16 +67,16 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="#" class="navbar-brand">网站后台管理</a>
+            <a href="${pageContext.request.contextPath}/admin/admin.jsp" class="navbar-brand">网站后台管理</a>
         </div>
         <ul id="top_right" class="collapse navbar-collapse nav navbar-nav navbar-right"	style="margin-right: 20px;">
             <li>
-                <a href="#">
-                    <span class="badge"	style="background-color: red;">23</span>
+                <a href="${pageContext.request.contextPath}/admin?method=searchOrder&ostate=2&username=">
+                    <span class="badge"	style="background-color: red;">message</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="${pageContext.request.contextPath}/user?method=loginOut">
                     <span class="glyphicon glyphicon-off"></span>注销
                 </a>
             </li>
@@ -93,6 +89,18 @@
                     <a href="#sub1" data-toggle="collapse" data-parent="#myPanel">  个人信息
                         <span class="glyphicon glyphicon-triangle-bottom pull-right"></span>
                     </a>
+                    <ul id="sub1" class="nav panel-collapse collapse">
+                        <li>
+                            <a href="" id="showUser11">
+                                <span class="glyphicon glyphicon-record"></span>&nbsp;完善ing
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" id="magic11">
+                                <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;完善ing
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="panel">

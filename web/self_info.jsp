@@ -29,17 +29,16 @@
 <%@ include file="header.jsp"%>
 <!--网站中间内容开始-->
 <div id="dingdanxiangqing_body">
-    <div id="dingdanxiangqing_body_big">
-        <div id="big_left">
-           	   <p style="font-size:18px;margin-top: 15px">订单中心</p>
-               <a id="big_left_a" href="orderDetail.jsp">我的订单</a><br/>
-               <p style="font-size:18px">个人中心</p>
-               <a id="big_left_a" href="self_info.html">我的个人中心</a><br/>
-               <a id="big_left_a" href="updatePwd.jsp" >修改密码</a><br/>
-               <a id="big_left_a" href="address?method=show">地址管理</a><br/>
-        </div>
+	<div id="dingdanxiangqing_body_big">
+		<div id="big_left">
+			<p style="font-size:18px;margin-top: 15px">订单中心</p>
+			<a id="big_left_a" href="order?method=myShow">我的订单</a><br/>
+			<p style="font-size:18px">个人中心</p>
+			<a id="big_left_a" href="user?method=myself">我的个人中心</a><br/>
+			<a id="big_left_a" href="updatePwd.jsp" >修改密码</a><br/>
+			<a id="big_left_a" href="address?method=show">收货地址</a><br/>
+		</div>
      <div id="big_right" style="height: 500px;overflow: scroll;">
-     
          <div style="margin:0 20px;">
 	         <h3>收货地址</h3>
 	         <hr>

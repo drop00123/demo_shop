@@ -28,9 +28,9 @@
         <h3><a href="user?method=show" style="text-decoration-line:none">历史评论</a></h3>
     </div>
     <div class="row">
-        <form action="user?method=show" method="post">
+        <form action="user?method=addBbs" method="post">
             <div style="margin-top: 40px;margin-bottom:10px" >
-                <textarea placeholder="请提出您的宝贵意见" autofocus style="width: 455px;height: 400px; resize:none" name="bbs"></textarea><br>
+                <textarea placeholder="请提出您的宝贵意见,“便民”只做最懂你的平台" autofocus style="width: 455px;height: 400px; resize:none" name="bbs"></textarea><br>
             </div>
             <div class="row">
                 <div class="col-sm-4  col-sm-offset-1">

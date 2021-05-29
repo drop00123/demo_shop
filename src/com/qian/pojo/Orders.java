@@ -1,5 +1,8 @@
 package com.qian.pojo;
 
+import org.junit.Test;
+
+import javax.xml.crypto.Data;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
@@ -99,9 +102,13 @@ public class Orders implements Serializable {
     public String getDa()
     {
         Date otime = getOtime();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss");
+        int hours = otime.getHours()+8;
+        int minutes = otime.getMinutes();
+        int seconds = otime.getSeconds();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String format = simpleDateFormat.format(otime);
-        return format;
+        String format1=format+"  "+hours+":"+minutes+":"+seconds;
+        return format1;
     }
 
     @Override

@@ -8,6 +8,7 @@
 <title>订单列表</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery.min.js"></script>
+
 <script type="text/javascript">
 	function deleteOrder(orderId) {
 		location.href="${pageContext.request.contextPath}/order?method=delete&oid="+orderId;
@@ -46,16 +47,16 @@
 					<th>${order.ocount}</th>
 					<th>
 						<font color="red">
-							<c:if test="${order.ostate eq 1 }">
+							<c:if test="${order.ostate eq 1}">
 								未支付
 							</c:if>
-							<c:if test="${order.ostate eq 2 }">
-								已支付,待收货
+							<c:if test="${order.ostate eq 2}">
+								已支付,待商家发货
 							</c:if>
-							<c:if test="${order.ostate eq 3 }">
-								已发货,待收货
+							<c:if test="${order.ostate eq 3}">
+								商家已发货,待收货
 							</c:if>
-							<c:if test="${order.ostate eq 4 }">
+							<c:if test="${order.ostate eq 4}">
 								订单完成
 							</c:if>
 						</font>
@@ -67,7 +68,7 @@
 							<button type="button" class="btn btn-primary btn-sm" onclick="pay('${order.oid}')">立即支付</button>
 						</c:if>
 						<button type="button" class="btn btn-danger btn-sm" onclick="deleteOrder('${order.oid}')">删除订单</button>
-						<c:if test="${order.ostate eq 3 }">
+						<c:if test="${order.ostate==3}">
 							<button type="button" class="btn btn-warning btn-sm" onclick="changeStatus('${order.oid}')">确认收货</button>
 						</c:if>
 					</th>
@@ -78,10 +79,7 @@
 	</div>
 	
 </div>
-	
-    
-<!-- 底部 -->
-<%@ include file="footer.jsp"%>
 
+<%@ include file="footer.jsp"%>
 </body>
 </html>

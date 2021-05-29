@@ -17,7 +17,7 @@
 		//4.两周以内自动登录  友好提示 
 		$("#autoLogin").click(function(){
 			if(this.checked){
-				$("#autoLoginMsg").html("公司电脑请勿勾选此项").css("color","red");
+				$("#autoLoginMsg").html("非个人电脑请勿勾选此项").css("color","red");
 			}else{
 				$("#autoLoginMsg").html("");
 			}

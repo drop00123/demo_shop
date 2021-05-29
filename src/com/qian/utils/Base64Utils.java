@@ -2,8 +2,8 @@ package com.qian.utils;
 
 import java.util.Base64;
 
-//base64 加密 解密 激活邮件的时候 为 邮箱地址 code验证码 进行加密
-//当 回传回来后 进行邮箱地址 和 code 的解密
+//base64加密,解密激活邮件的时候为邮箱地址code验证码进行加密
+//当回传回来后进行邮箱地址和code 的解密
 public class Base64Utils {
 	//加密
 	public static String encode(String msg){

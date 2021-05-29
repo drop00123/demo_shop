@@ -22,15 +22,15 @@
     </ol>
 
     <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
+    <div class="carousel-inner" role="listbox" style="width: 1578px;height: 309px">
         <div class="item active">
-            <img src="image/banner_1.jpg" class="img-circle" alt="...">
+            <img src="image/lun1.jpg" class="img-circle" alt="...">
         </div>
         <div class="item">
-            <img src="image/banner_2.jpg" class="img-circle" alt="...">
+            <img src="image/lun4.jpg" class="img-circle" alt="...">
         </div>
         <div class="item">
-            <img src="image/banner_3.jpg" class="img-circle" alt="...">
+            <img src="image/lun5.jpg" class="img-circle" alt="...">
         </div>
 
     </div>

@@ -92,37 +92,26 @@ public class UserController extends BaseServlet{
         String s = MD5Utils.md5(password);
         String code=req.getParameter("code");
         String code1 =(String)req.getSession().getAttribute("code");
-        User user = userService.GetUser(username);
-        if(user!=null)
-        {
-            if(user.getUrole()==1)
-            {
-                req.getSession().setAttribute("adminUser",user);
-                return "forward:/admin/index.jsp";
-            }
-            req.getSession().setAttribute("loginUser",user);
-            return "forward:/index.jsp";
-        }
-        return "forward:/login.jsp";
-      /*  if(code.equalsIgnoreCase(code1))
+       if(code.equalsIgnoreCase(code1))
         {
             User user = userService.GetUser(username);
-            if(user!=null)
-            {
-                return "forward:/login.jsp";
-            }
-            if(user!=null&user.getUstatus().equals(0))
-            {
-                req.setAttribute("msg","账号未激活");
-                return "forward:/login.jsp";
-            }
            if(user!=null&user.getUpassword().equals(s))
             {
-                req.getSession().setAttribute("loginUser",user);
-                String auto = req.getParameter("auto");
-                //是否自动登录
+                if(user.getUrole()==1)
+                {
+                    req.getSession().setAttribute("adminUser",user);
+                    return "forward:/admin/admin.jsp";
+                }else if(user.getUrole()==0)
+                {
+                    req.getSession().setAttribute("loginUser",user);
+                    return "forward:/index.jsp";
+                }
+                else
+                {
+                    req.setAttribute("msg","账号或密码错误");
+                }
+               String auto = req.getParameter("auto");
                 if(auto==null) {
-                    //将本地浏览器cookie清空
                     Cookie cookie = new Cookie("auto", "");
                     cookie.setPath("/"); //当前项目下所有资源都能访问
                     cookie.setMaxAge(0);
@@ -137,7 +126,6 @@ public class UserController extends BaseServlet{
                     cookie.setMaxAge(14*24*60*60);
                     resp.addCookie(cookie);
                 }
-                return "forward:/index.jsp";
             }
             else
             {
@@ -146,11 +134,22 @@ public class UserController extends BaseServlet{
             }
         }
         req.setAttribute("msg","验证码错误");
-        return "forward:/login.jsp";*/
+        return "forward:/login.jsp";
     }
     public String logOut(HttpServletRequest req,HttpServletResponse resp)
     {
         req.getSession().removeAttribute("loginUser");//清空session中的用户数据
+        Cookie cookie = new Cookie("auto","");
+        cookie.setPath("/");
+        cookie.setMaxAge(0);//清空和覆盖cookie存储的自动登录信息
+        resp.addCookie(cookie);
+        //转发到登录页面
+        req.setAttribute("msg","注销登录成功");
+        return "forward:/message.jsp";
+    }
+    public String loginOut(HttpServletRequest req,HttpServletResponse resp)
+    {
+        req.getSession().removeAttribute("adminUser");//清空session中的用户数据
         Cookie cookie = new Cookie("auto","");
         cookie.setPath("/");
         cookie.setMaxAge(0);//清空和覆盖cookie存储的自动登录信息
@@ -237,5 +236,17 @@ public class UserController extends BaseServlet{
         }
         req.setAttribute("msg","程序异常,修改密码失败");
         return "forward:/message.jsp";
+    }
+    public String myself(HttpServletRequest req,HttpServletResponse resp)
+    {
+        Object loginUser = req.getSession().getAttribute("loginUser");
+        if(loginUser==null)
+        {
+            req.setAttribute("msg","请先登录");
+            return "forward:/login.jsp";
+        }
+        User user = (User) loginUser;
+        req.setAttribute("u",user);
+        return "forward:/myself.jsp";
     }
 }

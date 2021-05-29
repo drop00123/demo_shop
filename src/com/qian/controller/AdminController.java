@@ -96,7 +96,6 @@ public class AdminController extends BaseServlet{
     }
     public String addGoods(HttpServletRequest req,HttpServletResponse resp)
     {
-        System.out.println("进来了");
         String name = req.getParameter("tname");
         System.out.println(name);
         String picture = req.getParameter("picture");

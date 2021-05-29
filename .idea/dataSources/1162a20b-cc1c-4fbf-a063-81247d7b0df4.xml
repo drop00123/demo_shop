@@ -939,373 +939,320 @@ SELECT|sys.sys_config:null
     <table id="293" parent="7" name="cart">
       <Comment>购物车实体</Comment>
     </table>
-    <table id="294" parent="7" name="item">
-      <Comment>订单内部的具体商品展示项</Comment>
-    </table>
-    <table id="295" parent="7" name="message"/>
-    <table id="296" parent="7" name="orders">
+    <table id="294" parent="7" name="message"/>
+    <table id="295" parent="7" name="orders">
       <Comment>订单模块的订单实体</Comment>
     </table>
-    <table id="297" parent="7" name="product">
+    <table id="296" parent="7" name="product">
       <Comment>商品模块的商品实体</Comment>
     </table>
-    <table id="298" parent="7" name="type">
+    <table id="297" parent="7" name="type">
       <Comment>商品模块的类别实体</Comment>
     </table>
-    <table id="299" parent="7" name="user">
+    <table id="298" parent="7" name="user">
       <Comment>用户模块的用户实体</Comment>
     </table>
-    <column id="300" parent="292" name="a_id">
+    <column id="299" parent="292" name="a_id">
       <Position>1</Position>
       <Comment>地址实体的唯一主键列</Comment>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="301" parent="292" name="u_id">
+    <column id="300" parent="292" name="u_id">
       <Position>2</Position>
       <Comment>用户实体的主键属性</Comment>
       <DataType>int|0s</DataType>
     </column>
-    <column id="302" parent="292" name="a_name">
+    <column id="301" parent="292" name="a_name">
       <Position>3</Position>
       <Comment>地址的收件人</Comment>
       <DataType>varchar(30)|0s</DataType>
     </column>
-    <column id="303" parent="292" name="a_phone">
+    <column id="302" parent="292" name="a_phone">
       <Position>4</Position>
       <Comment>收件人电话</Comment>
       <DataType>varchar(14)|0s</DataType>
     </column>
-    <column id="304" parent="292" name="a_detail">
+    <column id="303" parent="292" name="a_detail">
       <Position>5</Position>
       <Comment>收货人详细地址</Comment>
       <DataType>varchar(200)|0s</DataType>
     </column>
-    <column id="305" parent="292" name="a_state">
+    <column id="304" parent="292" name="a_state">
       <Position>6</Position>
       <Comment>是否是默认地址 0 不是 1是默认地址</Comment>
       <DataType>int|0s</DataType>
     </column>
-    <index id="306" parent="292" name="FK_u_a_fk">
+    <index id="305" parent="292" name="FK_u_a_fk">
       <ColNames>u_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="307" parent="292" name="PRIMARY">
+    <key id="306" parent="292" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>a_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="308" parent="292" name="FK_u_a_fk">
+    <foreign-key id="307" parent="292" name="FK_u_a_fk">
       <ColNames>u_id</ColNames>
       <RefTableName>user</RefTableName>
       <RefColNames>u_id</RefColNames>
     </foreign-key>
-    <column id="309" parent="293" name="c_id">
+    <column id="308" parent="293" name="c_id">
       <Position>1</Position>
       <Comment>购物车的唯一标识</Comment>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="310" parent="293" name="u_id">
+    <column id="309" parent="293" name="u_id">
       <Position>2</Position>
       <Comment>用户实体的主键属性</Comment>
       <DataType>int|0s</DataType>
     </column>
-    <column id="311" parent="293" name="p_id">
+    <column id="310" parent="293" name="p_id">
       <Position>3</Position>
       <Comment>商品的唯一主键</Comment>
       <DataType>int|0s</DataType>
     </column>
-    <column id="312" parent="293" name="c_count">
+    <column id="311" parent="293" name="c_count">
       <Position>4</Position>
       <Comment>购物车小计</Comment>
       <DataType>decimal(12,2 digit)|0s</DataType>
     </column>
-    <column id="313" parent="293" name="c_num">
+    <column id="312" parent="293" name="c_num">
       <Position>5</Position>
       <Comment>购物车商品数量</Comment>
       <DataType>int|0s</DataType>
     </column>
-    <index id="314" parent="293" name="FK_u_c_fk">
+    <index id="313" parent="293" name="FK_u_c_fk">
       <ColNames>u_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="315" parent="293" name="FK_p_c_fk">
+    <index id="314" parent="293" name="FK_p_c_fk">
       <ColNames>p_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="316" parent="293" name="PRIMARY">
+    <key id="315" parent="293" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>c_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="317" parent="293" name="FK_u_c_fk">
+    <foreign-key id="316" parent="293" name="FK_u_c_fk">
       <ColNames>u_id</ColNames>
       <RefTableName>user</RefTableName>
       <RefColNames>u_id</RefColNames>
     </foreign-key>
-    <foreign-key id="318" parent="293" name="FK_p_c_fk">
+    <foreign-key id="317" parent="293" name="FK_p_c_fk">
       <ColNames>p_id</ColNames>
       <RefTableName>product</RefTableName>
       <RefColNames>p_id</RefColNames>
     </foreign-key>
-    <column id="319" parent="294" name="i_id">
-      <Position>1</Position>
-      <Comment>订单项的唯一标识</Comment>
-      <DataType>int|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>null</SequenceIdentity>
-    </column>
-    <column id="320" parent="294" name="o_id">
-      <Position>2</Position>
-      <Comment>订单编号是字符串类型但是也是唯一标识</Comment>
-      <DataType>varchar(64)|0s</DataType>
-    </column>
-    <column id="321" parent="294" name="p_id">
-      <Position>3</Position>
-      <Comment>商品的唯一主键</Comment>
-      <DataType>int|0s</DataType>
-    </column>
-    <column id="322" parent="294" name="i_count">
-      <Position>4</Position>
-      <Comment>订单项的小计</Comment>
-      <DataType>decimal(12,2 digit)|0s</DataType>
-    </column>
-    <column id="323" parent="294" name="i_num">
-      <Position>5</Position>
-      <Comment>订单项的数量</Comment>
-      <DataType>int|0s</DataType>
-    </column>
-    <index id="324" parent="294" name="FK_o_i_fk">
-      <ColNames>o_id</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="325" parent="294" name="FK_p_i_fk">
-      <ColNames>p_id</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="326" parent="294" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>i_id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="327" parent="294" name="FK_o_i_fk">
-      <ColNames>o_id</ColNames>
-      <RefTableName>orders</RefTableName>
-      <RefColNames>o_id</RefColNames>
-    </foreign-key>
-    <foreign-key id="328" parent="294" name="FK_p_i_fk">
-      <ColNames>p_id</ColNames>
-      <RefTableName>product</RefTableName>
-      <RefColNames>p_id</RefColNames>
-    </foreign-key>
-    <column id="329" parent="295" name="m_id">
+    <column id="318" parent="294" name="m_id">
       <Position>1</Position>
       <Comment>留言id</Comment>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="330" parent="295" name="m_content">
+    <column id="319" parent="294" name="m_content">
       <Position>2</Position>
       <Comment>留言内容</Comment>
       <DataType>varchar(250)|0s</DataType>
     </column>
-    <column id="331" parent="295" name="m_time">
+    <column id="320" parent="294" name="m_time">
       <Position>3</Position>
       <Comment>留言时间</Comment>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="332" parent="295" name="u_id">
+    <column id="321" parent="294" name="u_id">
       <Position>4</Position>
       <Comment>用户id</Comment>
       <DataType>int|0s</DataType>
     </column>
-    <key id="333" parent="295" name="PRIMARY">
+    <key id="322" parent="294" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>m_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="334" parent="296" name="o_id">
+    <column id="323" parent="295" name="o_id">
       <Position>1</Position>
       <Comment>订单编号是字符串类型但是也是唯一标识</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="335" parent="296" name="u_id">
+    <column id="324" parent="295" name="u_id">
       <Position>2</Position>
       <Comment>用户实体的主键属性</Comment>
       <DataType>int|0s</DataType>
     </column>
-    <column id="336" parent="296" name="a_id">
+    <column id="325" parent="295" name="a_id">
       <Position>3</Position>
       <Comment>地址实体的唯一主键列</Comment>
       <DataType>int|0s</DataType>
     </column>
-    <column id="337" parent="296" name="o_count">
+    <column id="326" parent="295" name="o_count">
       <Position>4</Position>
       <Comment>订单的总金额</Comment>
       <DataType>decimal(12,2 digit)|0s</DataType>
     </column>
-    <column id="338" parent="296" name="o_time">
+    <column id="327" parent="295" name="o_time">
       <Position>5</Position>
       <Comment>订单的详细时间</Comment>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="339" parent="296" name="o_state">
+    <column id="328" parent="295" name="o_state">
       <Position>6</Position>
       <Comment>订单状态 0 未付款，1已经付款未发货 2发货待收货 3 收货待评价 4订单完成 5 退货状态</Comment>
       <DataType>int|0s</DataType>
     </column>
-    <index id="340" parent="296" name="FK_u_o_fk">
+    <index id="329" parent="295" name="FK_u_o_fk">
       <ColNames>u_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="341" parent="296" name="FK_a_o_fk">
+    <index id="330" parent="295" name="FK_a_o_fk">
       <ColNames>a_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="342" parent="296" name="PRIMARY">
+    <key id="331" parent="295" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>o_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="343" parent="296" name="FK_u_o_fk">
+    <foreign-key id="332" parent="295" name="FK_u_o_fk">
       <ColNames>u_id</ColNames>
       <RefTableName>user</RefTableName>
       <RefColNames>u_id</RefColNames>
     </foreign-key>
-    <foreign-key id="344" parent="296" name="FK_a_o_fk">
+    <foreign-key id="333" parent="295" name="FK_a_o_fk">
       <ColNames>a_id</ColNames>
       <RefTableName>address</RefTableName>
       <RefColNames>a_id</RefColNames>
     </foreign-key>
-    <column id="345" parent="297" name="p_id">
+    <column id="334" parent="296" name="p_id">
       <Position>1</Position>
       <Comment>商品的唯一主键</Comment>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="346" parent="297" name="t_id">
+    <column id="335" parent="296" name="t_id">
       <Position>2</Position>
       <Comment>类别的主键id</Comment>
       <DataType>int|0s</DataType>
     </column>
-    <column id="347" parent="297" name="p_name">
+    <column id="336" parent="296" name="p_name">
       <Position>3</Position>
       <Comment>商品的名称</Comment>
       <DataType>varchar(50)|0s</DataType>
     </column>
-    <column id="348" parent="297" name="p_time">
+    <column id="337" parent="296" name="p_time">
       <Position>4</Position>
       <Comment>商品的上市时间</Comment>
       <DataType>date|0s</DataType>
     </column>
-    <column id="349" parent="297" name="p_image">
+    <column id="338" parent="296" name="p_image">
       <Position>5</Position>
       <Comment>商品图片的路径</Comment>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="350" parent="297" name="p_price">
+    <column id="339" parent="296" name="p_price">
       <Position>6</Position>
       <Comment>商品的价格</Comment>
       <DataType>decimal(12,2 digit)|0s</DataType>
     </column>
-    <column id="351" parent="297" name="p_state">
+    <column id="340" parent="296" name="p_state">
       <Position>7</Position>
       <Comment>商品的热门指数</Comment>
       <DataType>int|0s</DataType>
     </column>
-    <column id="352" parent="297" name="p_info">
+    <column id="341" parent="296" name="p_info">
       <Position>8</Position>
       <Comment>商品的描述</Comment>
       <DataType>varchar(200)|0s</DataType>
     </column>
-    <index id="353" parent="297" name="FK_t_p_fk">
+    <index id="342" parent="296" name="FK_t_p_fk">
       <ColNames>t_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="354" parent="297" name="PRIMARY">
+    <key id="343" parent="296" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>p_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="355" parent="297" name="FK_t_p_fk">
+    <foreign-key id="344" parent="296" name="FK_t_p_fk">
       <ColNames>t_id</ColNames>
       <RefTableName>type</RefTableName>
       <RefColNames>t_id</RefColNames>
     </foreign-key>
-    <column id="356" parent="298" name="t_id">
+    <column id="345" parent="297" name="t_id">
       <Position>1</Position>
       <Comment>类别的主键id</Comment>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="357" parent="298" name="t_name">
+    <column id="346" parent="297" name="t_name">
       <Position>2</Position>
       <Comment>类别的名称</Comment>
       <DataType>varchar(20)|0s</DataType>
     </column>
-    <column id="358" parent="298" name="t_info">
+    <column id="347" parent="297" name="t_info">
       <Position>3</Position>
       <Comment>类别的描述</Comment>
       <DataType>varchar(200)|0s</DataType>
     </column>
-    <key id="359" parent="298" name="PRIMARY">
+    <key id="348" parent="297" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>t_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="360" parent="299" name="u_id">
+    <column id="349" parent="298" name="u_id">
       <Position>1</Position>
       <Comment>用户实体的主键属性</Comment>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="361" parent="299" name="u_name">
+    <column id="350" parent="298" name="u_name">
       <Position>2</Position>
       <Comment>用户账号</Comment>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="362" parent="299" name="u_password">
+    <column id="351" parent="298" name="u_password">
       <Position>3</Position>
       <Comment>用户密码</Comment>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="363" parent="299" name="u_email">
+    <column id="352" parent="298" name="u_email">
       <Position>4</Position>
       <Comment>用户的邮箱！用于激活使用！</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="364" parent="299" name="u_sex">
+    <column id="353" parent="298" name="u_sex">
       <Position>5</Position>
       <Comment>用户性别！</Comment>
       <DataType>varchar(4)|0s</DataType>
     </column>
-    <column id="365" parent="299" name="u_status">
+    <column id="354" parent="298" name="u_status">
       <Position>6</Position>
       <Comment>用户的激活状态 0 未激活 1 激活</Comment>
       <DataType>int|0s</DataType>
     </column>
-    <column id="366" parent="299" name="u_code">
+    <column id="355" parent="298" name="u_code">
       <Position>7</Position>
       <Comment>邮件激活码</Comment>
       <DataType>varchar(64)|0s</DataType>
     </column>
-    <column id="367" parent="299" name="u_role">
+    <column id="356" parent="298" name="u_role">
       <Position>8</Position>
       <Comment>用户 0 管理员 1</Comment>
       <DataType>int|0s</DataType>
     </column>
-    <key id="368" parent="299" name="PRIMARY">
+    <key id="357" parent="298" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>u_id</ColNames>
       <Primary>1</Primary>

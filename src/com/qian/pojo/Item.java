@@ -3,9 +3,6 @@ package com.qian.pojo;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-/**
- * 对应数据库订单项
- */
 public class Item implements Serializable {
 
     private static  final long serialVersionUID = 1L;

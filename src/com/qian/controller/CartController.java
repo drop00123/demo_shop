@@ -35,6 +35,23 @@ public class CartController extends BaseServlet{
         cartService.createCart(uid,i);
         return "forward:/cartSuccess.jsp";
     }
+    public String directToCart(HttpServletRequest req,HttpServletResponse resp)
+    {
+        HttpSession session = req.getSession();
+        User loginUser = (User)session.getAttribute("loginUser");
+        if(loginUser==null)
+        {
+            session.setAttribute("msg","购买需先登录");
+            return "forward:/login.jsp";
+        }
+        int uid = loginUser.getUid();
+        String pid = req.getParameter("pid");
+        int i = Integer.parseInt(pid);
+        cartService.createCart(uid,i);
+        List<Cart> all = cartService.findAll(uid);
+        req.setAttribute("list",all);
+        return "forward:/cart.jsp";
+    }
     public String show(HttpServletRequest req,HttpServletResponse resp)
     {
         HttpSession session = req.getSession();

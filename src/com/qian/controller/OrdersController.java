@@ -56,6 +56,20 @@ public class OrdersController extends BaseServlet {
        req.setAttribute("ordersList",list);
        return "forward:/orderList.jsp";
     }
+    public String myShow(HttpServletRequest req,HttpServletResponse resp)
+    {
+        HttpSession session = req.getSession();
+        Object loginUser = session.getAttribute("loginUser");
+        if(loginUser==null)
+        {
+            req.setAttribute("msg","登录可查看订单");
+            return "forward:/login.jsp";
+        }
+        User user = (User) loginUser;
+        List<Orders>  list=ordersService.findOrdersByUid(user.getUid());
+        req.setAttribute("ordersList",list);
+        return "forward:/myOrderList.jsp";
+    }
     public String delete(HttpServletRequest req,HttpServletResponse resp)
     {
         String oid = req.getParameter("oid");

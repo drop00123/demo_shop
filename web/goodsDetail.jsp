@@ -5,7 +5,12 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>商品详情页</title>
-
+	<script src="js/jquery.min.js"></script>
+	<script>
+		function directBuy(id) {
+			window.location="${pageContext.request.contextPath}/cart?method=directToCart&pid="+id;
+		}
+	</script>
 </head>
 <body>
 <%@ include file="header.jsp"%>
@@ -42,7 +47,7 @@
 						<p>详细介绍:</p>
 						<p>&nbsp;&nbsp;${product.pinfo }</p>
 						<a href="${pageContext.request.contextPath}/cart?method=create&pid=${product.pid}" class="btn btn-warning">加入购物车&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-shopping-cart"></span></a>&nbsp;&nbsp;&nbsp;
-						<button class="btn btn-danger">直接购买</button>
+						<button class="btn btn-danger" onclick="directBuy(${product.pid})">直接购买</button>
 					</div>
 				</div>
 			</div>

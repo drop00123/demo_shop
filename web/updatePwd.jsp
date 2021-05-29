@@ -80,9 +80,9 @@ function rePwd() {
     <div id="dingdanxiangqing_body_big">
         <div id="big_left">
             <p style="font-size:18px;margin-top: 15px">订单中心</p>
-            <a id="big_left_a" href="orderDetail.jsp">我的订单</a><br/>
+            <a id="big_left_a" href="order?method=myShow">我的订单</a><br/>
             <p style="font-size:18px">个人中心</p>
-            <a id="big_left_a" href="self_info.html">我的个人中心</a><br/>
+            <a id="big_left_a" href="user?method=myself">我的个人中心</a><br/>
             <a id="big_left_a" href="updatePwd.jsp" >修改密码</a><br/>
             <a id="big_left_a" href="address?method=show">收货地址</a><br/>
         </div>

@@ -16,9 +16,9 @@
 	<div class="regist">
 		<div class="regist_center">
 			<div class="regist_top">
-				<div class="left fl"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;会员注册</div>
+				<div class="left fl"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;便民购物</div>
 				<div class="right fr">
-					<a href="index.jsp" target="_black">MyShop</a>
+					<a href="index.jsp" target="_black">Convenience shopping</a>
 				</div>
 				<div class="clear"></div>
 				<div class="xian center"></div>

@@ -21,13 +21,5 @@ public class RandomUtils {
 		return getTime();
 	}
 
-	@Test
-	public void test01()
-	{
-		int a=new Random().nextInt(900)+100;
-		String s = Integer.toHexString(a);
-		System.out.println(s);
-		System.out.println(a);
-	}
 }
 
