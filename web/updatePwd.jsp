@@ -9,6 +9,7 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <title>个人中心-收货地址页面</title>
+    <link rel="icon" type="image/x-icon" href="icon/shop.jpg" />
     <script type="text/javascript">
 
         function deleteAddr(aid)

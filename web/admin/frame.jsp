@@ -68,6 +68,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a href="${pageContext.request.contextPath}/admin/admin.jsp" class="navbar-brand">网站后台管理</a>
+           <span style="text-align: center"><a href="${pageContext.request.contextPath}/admin/admin.jsp" class="navbar-brand">${adminUser.username}感谢您的付出</a></span>
         </div>
         <ul id="top_right" class="collapse navbar-collapse nav navbar-nav navbar-right"	style="margin-right: 20px;">
             <li>
@@ -91,12 +92,12 @@
                     </a>
                     <ul id="sub1" class="nav panel-collapse collapse">
                         <li>
-                            <a href="" id="showUser11">
-                                <span class="glyphicon glyphicon-record"></span>&nbsp;完善ing
+                            <a href="#" id="showAdmin">
+                                <span class="glyphicon glyphicon-record"></span>&nbsp;个人主页
                             </a>
                         </li>
                         <li>
-                            <a href="" id="magic11">
+                            <a href="#" id="magic11">
                                 <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;完善ing
                             </a>
                         </li>
@@ -181,5 +182,8 @@
         })
         $("#showOrder").click(function(){
             $("#showOrder").attr("href","${pageContext.request.contextPath}/admin?method=getAllOrder");
+        })
+        $("#showAdmin").click(function () {
+            $("#showAdmin").attr("href","${pageContext.request.contextPath}/admin?method=getAdmin")
         })
     </script>

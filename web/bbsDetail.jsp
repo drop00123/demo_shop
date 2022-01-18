@@ -13,6 +13,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <title>Title</title>
+    <link rel="icon" type="image/x-icon" href="icon/shop.jpg" />
 </head>
 <body>
 <%@ include file="header.jsp"%>

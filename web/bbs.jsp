@@ -14,6 +14,7 @@
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <head>
     <title>留言板</title>
+    <link rel="icon" type="image/x-icon" href="icon/shop.jpg" />
 </head>
 <style>
     #bbs{

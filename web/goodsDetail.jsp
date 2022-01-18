@@ -5,6 +5,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>商品详情页</title>
+	<link rel="icon" type="image/x-icon" href="icon/shop.jpg" />
 	<script src="js/jquery.min.js"></script>
 	<script>
 		function directBuy(id) {

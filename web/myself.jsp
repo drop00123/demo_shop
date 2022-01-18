@@ -14,6 +14,7 @@
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <title>Title</title>
+    <link rel="icon" type="image/x-icon" href="icon/shop.jpg" />
 </head>
 <body>
 <script>

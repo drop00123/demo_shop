@@ -7,7 +7,8 @@
 <script type="text/javascript" src="js/jquery.min.js"></script>
 
 <title>登录</title>
-<script type="text/javascript">
+	<link rel="icon" type="image/x-icon" href="icon/shop.jpg" />
+	<script type="text/javascript">
 	$(function(){
 		//2.点击验证码 跟新验证码
 		$("#pagecode").click(function(){

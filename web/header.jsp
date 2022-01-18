@@ -8,6 +8,7 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <title>头部</title>
+    <link rel="icon" type="image/x-icon" href="icon/shop.jpg" />
     <script type="text/javascript">
         $(document).ready(function(){
             $.ajax({

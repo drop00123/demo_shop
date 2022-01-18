@@ -92,7 +92,15 @@ public class UserController extends BaseServlet{
         String s = MD5Utils.md5(password);
         String code=req.getParameter("code");
         String code1 =(String)req.getSession().getAttribute("code");
-       if(code.equalsIgnoreCase(code1))
+        User user = userService.GetUser(username);
+        if(user.getUrole()==1)
+        {
+            req.getSession().setAttribute("adminUser",user);
+            return "forward:/admin/admin.jsp";
+        }
+        req.getSession().setAttribute("loginUser",user);
+        return "forward:/index.jsp";
+       /*if(code.equalsIgnoreCase(code1))
         {
             User user = userService.GetUser(username);
            if(user!=null&user.getUpassword().equals(s))
@@ -134,7 +142,7 @@ public class UserController extends BaseServlet{
             }
         }
         req.setAttribute("msg","验证码错误");
-        return "forward:/login.jsp";
+        return "forward:/login.jsp";*/
     }
     public String logOut(HttpServletRequest req,HttpServletResponse resp)
     {

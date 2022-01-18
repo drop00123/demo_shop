@@ -17,7 +17,7 @@ public class BaseServlet extends HttpServlet {
         //1.获取请求参数（标识符）
         String methodStr = req.getParameter(Constants.TAG);
 
-        //2.如果method没有获取到值！我们就跳转到首页！（标识符异常处理）
+        //2.如果method没有获取到值！我们就跳转到首页！
         if (methodStr == null && methodStr.equals("")) {
             methodStr = Constants.INDEX;
         }

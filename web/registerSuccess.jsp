@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css" href="css/login.css">
 
 <title>注册成功</title>
+	<link rel="icon" type="image/x-icon" href="icon/shop.jpg" />
 </head>
 <body>
 	<div class="regist">

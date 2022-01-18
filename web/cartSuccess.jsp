@@ -5,6 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" href="css/bootstrap.min.css" />
 <title>购物车</title>
+	<link rel="icon" type="image/x-icon" href="icon/shop.jpg" />
 </head>
 <body>
 <%@ include file="header.jsp" %>

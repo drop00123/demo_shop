@@ -5,7 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>购物车</title>
-<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="icon" type="image/x-icon" href="icon/shop.jpg" />
+	<link href="css/bootstrap.min.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript">
 

@@ -14,14 +14,6 @@ import java.net.UnknownHostException;
 import java.util.Date;
 import java.util.Properties;
 
-/*
- * 1.首先需要获取发送邮件的Session对象
- * 	Session session = Session.getDefaultInstance(Properties prop)
- * 2.使用session对象 获取待发送的邮件信息
- *  MimeMessage mime = new MimeMessage(session)
- * 3.设置发件人 收件人 标题 邮件内容 附件 发送时间等等
- * 4.利用Transport 发送邮件
- * */
 public class EmailUtils {
 	public static void sendEmail(User user){
 		//发送方

@@ -151,4 +151,9 @@ public class AdminController extends BaseServlet{
         req.setAttribute("pageBean",pageBean);
         return "forward:/admin/userList.jsp";
     }
+    public String getAdmin(HttpServletRequest  req,HttpServletResponse resp)
+    {
+
+        return "forward:/admin/myself.jsp";
+    }
 }

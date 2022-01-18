@@ -25,6 +25,7 @@
 		})
 	</script>
 	<title>注册</title>
+	<link rel="icon" type="image/x-icon" href="icon/shop.jpg" />
 </head>
 <body>
 <div class="regist">

@@ -9,6 +9,7 @@
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <title>便民商城首页</title>
+    <link rel="icon" type="image/x-icon" href="icon/shop.jpg" />
 </head>
 <body>
 <%@ include file="header.jsp"%>
